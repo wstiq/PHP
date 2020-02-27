@@ -16,19 +16,18 @@
 </html>
 
 <?php
-//echo $_REQUEST['text'];
 
-$data = $_REQUEST['textinput'] ?? ''; //данные, которые вводим
+$data = $_REQUEST['textinput'] ?? '';
 $params = $_REQUEST['text'] ?? '';
-$array = array(0); //хранение результата
-$cell = 0; //текущий элемент
+$array = array(0);
+$cell = 0;
 
-$splited = str_split($data); //преобразование в массив данных
+$splited = str_split($data);
 $params_array = str_split($params);
 $index_for_params = 0;
 $brackets = 0;
 
-//echo count($data_array);
+
 
 for($i=0; $i<count($splited); ++$i) {
     switch($splited[$i]) {
