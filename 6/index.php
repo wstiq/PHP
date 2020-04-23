@@ -21,11 +21,11 @@ if ($text) {
 }
 
 function register($string, $upper){
-    if ($upper) {
-
-        return mb_strtoupper($string, 'UTF-8');
-    } else {
-        return mb_strtolower($string, 'UTF-8');
+    switch ($upper){
+        case "true":
+            return mb_strtoupper($string, 'UTF-8');
+        case "false":
+            return mb_strtolower($string, 'UTF-8');
     }
 }
 
