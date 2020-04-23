@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Logger</title>
+    </head>
+    <body>
+        <form method="post">
+            <textarea placeholder="Введи что-нибудь" name="data"></textarea>
+            <p><input placeholder="Имя файла" name="fileName" /></p>
+            <div class="group1">
+                <p>
+                    <input type="radio" name="logger" value="one" />Записать в
+                    файл
+                </p>
+                <p>
+                    <input type="radio" name="logger" value="two" />Записать в
+                    браузер
+                </p>
+            </div>
+            <p style="font-size: 20px">Логировать в:</p>
+            <div class="group2" style="margin-left:50px ">
+                <p><input type="radio" name="check" value="1" />Только время</p>
+                <p><input type="radio" name="check" value="2" />Дата и время</p>
+                <p><input type="radio" name="check" value="3" />Ничего</p>
+            </div>
+            <button>Ок</button>
+        </form>
+    </body>
+</html>
