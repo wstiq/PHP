@@ -42,6 +42,45 @@ while (true) {
 }
 
 $now = date('d', time());
+$monthnow = date('m', time());
+switch ($monthnow){
+    case 1:
+        $monthnow = "январь";
+        break;
+    case 2:
+        $monthnow = "февраль";
+        break;
+    case 3:
+        $monthnow = "март";
+        break;
+    case 4:
+        $monthnow = "апрель";
+        break;
+    case 5:
+        $monthnow = "май";
+        break;
+    case 6:
+        $monthnow = "июнь";
+        break;
+    case 7:
+        $monthnow = "июль";
+        break;
+    case 8:
+        $monthnow = "август";
+        break;
+    case 9:
+        $monthnow = "сентябрь";
+        break;
+    case 10:
+        $monthnow = "октябрь";
+        break;
+    case 11:
+        $monthnow = "ноябрь";
+        break;
+    case 12:
+        $monthnow = "декабрь";
+        break;
+}
 
 echo "<table border=1 style='text-align: center; border-collapse: collapse; width:200px; height: 200px'>";
 echo "<caption style='font-size: 30px'>" . $months[$key - 1] . "</caption>";
@@ -51,7 +90,7 @@ for ($i = 0; $i < count($week); $i++) {
         if (!empty($week[$i][$j])) {
             if ($j == 5 || $j == 6) //values = сб/вс
                 echo "<td><font color=red>" . $week[$i][$j] . "</font></td>"; //с выделением выходных красным
-            else if ($week[$i][$j] == $now)
+            else if (($week[$i][$j] == $now) && (strcasecmp($monthnow, $month) == 0))
                 echo "<td><font color=blue>" . $week[$i][$j] . "</font></td>";
             else echo "<td>" . $week[$i][$j] . "</td>";
         } else echo "<td>&nbsp;</td>"; // <!ENTITY nbsp " " >
