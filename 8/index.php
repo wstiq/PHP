@@ -4,7 +4,47 @@ $months = ["январь", "февраль", "март", "апрель", "май
     "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"]; //"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"
 if (isset($_GET['month'])) {
     $month = $_GET['month'];
-} else $month = " ";
+} else $month = date('m', time());
+//echo ("1)month is " . $month);
+switch ($month){
+    case 1:
+        $month = "январь";
+        break;
+    case 2:
+        $month = "февраль";
+        break;
+    case 3:
+        $month = "март";
+        break;
+    case 4:
+        $month = "апрель";
+        break;
+    case 5:
+        $month = "май";
+        break;
+    case 6:
+        $month = "июнь";
+        break;
+    case 7:
+        $month = "июль";
+        break;
+    case 8:
+        $month = "август";
+        break;
+    case 9:
+        $month = "сентябрь";
+        break;
+    case 10:
+        $month = "октябрь";
+        break;
+    case 11:
+        $month = "ноябрь";
+        break;
+    case 12:
+        $month = "декабрь";
+        break;
+}
+//echo ("2)month is " . $month);
 $key = array_search($month, $months);
 if (gettype($key) != 'boolean') {
     $key += 1;
@@ -42,7 +82,15 @@ while (true) {
 }
 
 $now = date('d', time());
+//echo ("now is" . $now); //30
+//echo ("\n ");
 $monthnow = date('m', time());
+//echo ("monthnow is " . $monthnow); //04
+//echo ("\n ");
+//echo ("month is " . $month); //04
+//echo ("\n ");
+//echo ("gettype of monthnow   " . (gettype($monthnow)) . " ;");
+//echo ("stracse of month monthnow" . strcasecmp($month, $monthnow) . " ");
 switch ($monthnow){
     case 1:
         $monthnow = "январь";
@@ -90,8 +138,8 @@ for ($i = 0; $i < count($week); $i++) {
         if (!empty($week[$i][$j])) {
             if ($j == 5 || $j == 6) //values = сб/вс
                 echo "<td><font color=red>" . $week[$i][$j] . "</font></td>"; //с выделением выходных красным
-            else if (($week[$i][$j] == $now) && (strcasecmp($monthnow, $month) == 0))
-                echo "<td><font color=blue>" . $week[$i][$j] . "</font></td>";
+            else if (($week[$i][$j] == $now) && (strcasecmp($month, $monthnow) == 0))
+                echo "<td><font color=blue>" . $now . "</font></td>";
             else echo "<td>" . $week[$i][$j] . "</td>";
         } else echo "<td>&nbsp;</td>"; // <!ENTITY nbsp " " >
     }
