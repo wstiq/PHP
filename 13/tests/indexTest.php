@@ -6,8 +6,23 @@ use index\index;
 
 class ComplexExpressionTest extends TestCase
 {
+
+    public function testToString()
+    {
+        $complex = new ComplexExpression(1, 2);
+        $this->assertEquals("(1,2)", $complex->__toString());
+    }
+
+    public function testDivZero()
+    {
+        $complex = new ComplexExpression(1, 2);
+        $this->assertEquals('zero division is rejected.', $complex->div(new ComplexExpression(0, 0)));
+    }
+
+
     public function testAddCorrect()
     {
+        $complex = new ComplexExpression(10, 2);
         $complex = new ComplexExpression(10, 2);
         $complex->add(new ComplexExpression(2, -10));
         $this->assertEquals("(12,-8)", $complex->__toString());

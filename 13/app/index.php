@@ -31,8 +31,12 @@ class index
     public function div(ComplexExpression $complex)
     {
         $c = $this->a;
-        $this->a = ($this->a * $this->b + $complex->a * $complex->b) / (pow($this->b, $this->b) + pow($complex->b, $complex->b));
-        $this->b = ($complex->a * $this->b - $c * $complex->b) / (pow($this->b, $this->b) + pow($complex->b, $complex->b));
+        if (($complex->a != 0 and $complex->b != 0)) {
+            $this->a = ($this->a * $this->b + $complex->a * $complex->b) / (pow($this->b, $this->b) + pow($complex->b, $complex->b));
+            $this->b = ($complex->a * $this->b - $c * $complex->b) / (pow($this->b, $this->b) + pow($complex->b, $complex->b));
+        } else {
+            return "division on zero is rejected";
+        }
     }
 
 
