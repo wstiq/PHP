@@ -1,0 +1,13 @@
+{
+  "name": "php",
+  "authors": [
+    {
+      "name": "Mark"
+    }
+  ],
+  "require": {
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.1"
+  }
+}
