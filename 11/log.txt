@@ -1,0 +1,1 @@
+[{"date":"26.05.20 17:07:14:000000","type":"logger\\Logger debug","content":"debug, "}]

@@ -1,46 +1,28 @@
 <?php
 
-require "index.html";
+if (isset($_GET["send"])) {
+    $par_pos = 0;
+    $text = (string) $_GET["text"];
+    $pos = 0;
+    $arr = array(0);
+    header("Expires: Thu, 19 Feb 1998 13:24:18 GMT");
+    header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+    header("Cache-Control: no-cache, must-revalidate");
+    header("Cache-Control: post-check=0,pre-check=0");
+    header("Cache-Control: max-age=0");
+    header("Pragma: no-cache");
+    if(!isset($_COOKIE["string"])){
+        setcookie("string", $text);
+        header("Location: http://localhost:63342/12/task2.php?text=$text&send=Redirect");
 
-$in = "";
-if (isset($_POST["text"])) {
-    $data = $_POST["text"];
-    if (isset($_COOKIE["cookie"]))
-        $in = $_COOKIE["cookie"];
-    else setcookie("cookie", $data, time() + 10);
+    }else{
+//        header("Location: http://localhost:63342/12/task2.php");
+        header("Location: http://localhost:63342/12/task2.php?text=$text&send=Redirect");
 
-    $postdata = http_build_query(
-        array(
-            'text' => $data
-        )
-    );
-    $opts = array('http' =>
-        array(
-            'method' => 'POST',
-            'header' => 'Content-Type: application/x-www-form-urlencoded',
-            'content' => $postdata
-        )
-    );
-
-    $context = stream_context_create($opts);
-    $result = file_get_contents('file.php', false, $context);
+    }
 
 
-    echo $result;
-
-
+} else {
+    include "web.php";
 }
-
 ?>
-
-
-<script>
-    let input = document.getElementById("text");
-    let inf = '<?php echo $in;?>';
-    input.value = inf;
-</script>
-
-
-
-
-

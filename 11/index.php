@@ -1,36 +1,31 @@
-<?php
-require "index.html";
-require_once "Logger.php";
-require_once "LoggerFile.php";
+<pre><?php
+    require_once("Logger.php");
 
-if (isset($_POST['data'])) {
-    $data = $_POST['data'];
+    use logger\Logger;
 
-    function writeFormat($data)
-    {
-        $data_array = explode("\n", $data);
-        for ($i = 0; $i < count($data_array); $i++) {
-            $data_array[$i] = str_replace("\r", "", $data_array[$i]);
-        }
-        $object = [];
+    if (isset($_POST["send"])) {
+        $logger = new Logger("log.txt");
+        $logger->log("debug", "debug");
+//        $logger->log("info", "info");
+//        https://www.php-fig.org/psr/psr-3/
+//        $logger->log("notice", "notice");
+//        $logger->log("warning", "warning");
+//        $logger->log("error", "error");
+//        $logger->log("critical", "critical");
+//        $logger->log("alert", "alert");
+//        $logger->log("emergency", "emergenct");
 
-        for ($i = 0; $i < count($data_array); $i++) {
-            $createObject = (object)[];
-            if (preg_match("/^[1-9][\.\d]*(,\d+)?$/", $data_array[$i])) {
-                $createObject->type = "numeric/number";
-            } else $createObject->type = "string";
 
-            $createObject->date = '[' . date("d-m-Y h:i:s") . ']'; //who cares if not msk time?
-            $createObject->info = $data_array[$i];
-
-            array_push($object, $createObject);
-        }
-        $main["json"] = $object;
-        return json_encode($main, JSON_UNESCAPED_UNICODE);
-
+    } else {
+        include "web.html";
     }
 
-    $fileName = $_POST["fileName"] ? $_POST["fileName"] : "File";
-    $toFile = new LoggerFile($fileName);
-    $toFile->log(writeFormat($data));
-}
+
+    ?>
+
+
+
+</pre>
+
+
+
