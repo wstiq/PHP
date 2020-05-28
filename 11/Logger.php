@@ -53,9 +53,10 @@ class Logger implements LoggerInterface
 
     function __destruct()
     {
-        $json = json_encode($this->json_array, JSON_UNESCAPED_UNICODE);
-        fwrite($this->file, $json); //записываем файл один раз
-        fclose($this->file);
+//        $json = json_encode($this->json_array, JSON_UNESCAPED_UNICODE);
+//        fwrite($this->file, $json); //записываем файл один раз
+//        fclose($this->file);
+        fwrite($this->file, json_encode($this->json_array, JSON_UNESCAPED_UNICODE));
     }
 
     public function emergency($message, array $context = [])
